@@ -1,41 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   21ft_atoi.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vharkush <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 18:54:55 by vharkush          #+#    #+#             */
-/*   Updated: 2022/10/06 18:56:51 by vharkush         ###   ########.fr       */
+/*   Created: 2022/10/16 16:43:41 by vharkush          #+#    #+#             */
+/*   Updated: 2022/10/16 16:43:46 by vharkush         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	sign;
-	int	j;
-	int	i;
+	unsigned int	i;
 
 	i = 0;
-	j = 0;
-	sign = 1;
-	while (str[i] == ' ' || str[i] == '\v' || str[i] == '\t'
-		|| str[i] == '\r' || str[i] == '\n' || str[i] == '\f')
+	if (!s || !f)
+		return ;
+	while (s[i])
 	{
+		(*f)(i, s + i);
 		i++;
 	}
-	if ((str[i] == '+' || str[i] == '-') && str[i] != '\0')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
-	{
-		j = j * 10 + (str[i] - '0');
-		i++;
-	}
-	return (sign * j);
 }

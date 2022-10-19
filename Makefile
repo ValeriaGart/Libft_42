@@ -6,13 +6,9 @@
 #    By: vharkush <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 11:44:03 by vharkush          #+#    #+#              #
-#    Updated: 2022/10/11 17:30:01 by vharkush         ###   ########.fr        #
+#    Updated: 2022/10/17 16:50:12 by vharkush         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-CC	=	gcc
-
-CFLAGS	=	-Wextra -Werror -Wall
 
 SRC	=	ft_isalpha.c	\
 		ft_isdigit.c	\
@@ -37,7 +33,19 @@ SRC	=	ft_isalpha.c	\
 		ft_atoi.c	\
 		ft_calloc.c	\
 		ft_strdup.c	\
-		ft_lstnew.c	\
+		ft_substr.c	\
+		ft_strjoin.c	\
+		ft_strtrim.c	\
+		ft_split.c	\
+		ft_itoa.c	\
+		ft_strmapi.c	\
+		ft_striteri.c	\
+		ft_putchar_fd.c	\
+		ft_putstr_fd.c	\
+		ft_putendl_fd.c	\
+		ft_putnbr_fd.c
+
+BONUS	=	ft_lstnew.c	\
 		ft_lstadd_front.c	\
 		ft_lstsize.c	\
 		ft_lstlast.c	\
@@ -45,35 +53,38 @@ SRC	=	ft_isalpha.c	\
 		ft_lstdelone.c	\
 		ft_lstclear.c	\
 		ft_lstiter.c	\
-		ft_lstmap.c	\
-		ft_substr.c	\
-		ft_strjoin.c	\
-		ft_strtrim.c	\
-		ft_split.c	\
-		ft_itoa.c
+		ft_lstmap.c
 
-OBJ	=	${SRC:.c=.o}
+OBJ     =       ${SRC:.c=.o}
+
+B_OBJS  =       ${BONUS:.c=.o}
+
+CC      =       cc
+
+CFLAGS  =       -Wextra -Werror -Wall
+
+NAME    =       libft.a
 
 RM	=	rm -f
 
 AR	=	ar rc
 
-NAME	=	libft.a
-
 all:    ${NAME}
 
-${NAME}:	${OBJ}
+$(NAME):	${OBJ}
 			${AR} ${NAME} ${OBJ}
 			ranlib ${NAME}
 
+bonus:		${B_OBJS}
+			${AR} ${NAME} ${B_OBJS}
+			ranlib ${NAME}
+
 clean:
-		${RM} ${OBJ}
+		${RM} ${OBJ} ${B_OBJS}
 
 fclean:	clean
 		${RM} ${NAME}
 
 re:	fclean all
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
+.PHONY:	all bonus clean fclean re

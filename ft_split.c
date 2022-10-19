@@ -63,7 +63,7 @@ void	*assign_pls(char *s, char c, int word)
 	while (s[length] != c && s[length] != '\0')
 		length++;
 	length -= i;
-	res = malloc(sizeof(char *) * (length + 1));
+	res = malloc(sizeof(char) * (length + 1));
 	if (!res)
 		return (0);
 	res[length] = '\0';
@@ -87,7 +87,7 @@ void	res_ass(char *str, char c, char **res, int words)
 		res[i] = assign_pls(str, c, i);
 		i++;
 	}
-	res[i] = '\0';
+	res[i] = 0;
 }
 
 char	**ft_split(char const *s, char c)
@@ -97,16 +97,18 @@ char	**ft_split(char const *s, char c)
 	int		words;
 
 	if (!s)
-		return (0);
-	if (s[0] == '\0')
-	{
-		res = malloc(1);
-		res[0] = '\0';
-		return (res);
-	}
+		return (NULL);
 	str = (char *)s;
 	while (*str == c)
 		str++;
+	if (*str == '\0' || s[0] == '\0')
+	{
+		res = (char **)malloc(sizeof(char **) * 1);
+		if (!res)
+			return (NULL);
+		res[0] = 0;
+		return (res);
+	}
 	words = count_words(str, c);
 	res = (char **)malloc(sizeof(char **) * (words + 1));
 	if (!res)

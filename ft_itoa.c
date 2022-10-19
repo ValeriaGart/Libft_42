@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include <stdio.h>
 
 int	ft_check_len(long n)
 {
@@ -50,7 +49,7 @@ char	*ft_min(int num)
 	int		i;
 
 	i = num + 2147483650;
-	c = malloc(sizeof(char *) * 12);
+	c = malloc(sizeof(char) * 12);
 	if (!c)
 		return (0);
 	c[0] = '-';
@@ -64,7 +63,7 @@ char	*ft_itoa(int n)
 {
 	char	*c;
 	int		i;
-	long		num;
+	long	num;
 
 	num = n;
 	if (num == -2147483648)
@@ -86,25 +85,3 @@ char	*ft_itoa(int n)
 	c[i] = '\0';
 	return (c);
 }
-/*char	*ft_itoa(int n)
-{
-	char	*c;
-	int		i;
-	int		num;
-
-	num = n;
-	if (num == -2147483648 && (c = ft_min(num)) != 0)
-		return (c);
-	i = ft_check_len(num);
-	if ((c = malloc(sizeof(char) * (i + 1))) == NULL)
-		return (NULL);
-	i = 0;
-	while (num < 0)
-	{
-		c[i++] = '-';
-		num *= -1;
-	}
-	ft_putnum(num, &i, c);
-	c[i] = '\0';
-	return (c);
-}*/
