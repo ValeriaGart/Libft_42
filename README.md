@@ -6,7 +6,7 @@ This is a library of functions that reproduce the behaviour of some common funct
 
 ## But why?..
 
-Well, that was one of the mandatory projects and now after finishing it i realize how convenient it is using functions you codded yourself from the scratch. Knowing how exactly things work and have oportunity to not think of it is agreat privilage. Especially when it's about dinamic memory allocation, when you have to know how each byte is stored 😵
+Well, that was one of the mandatory projects. Now after finishing it i realize how convenient it is using functions you codded yourself from the scratch. Knowing how the things exactly work and have an oportunity to not think of it, is a great privilage. Especially when it's about dinamic memory allocation, when you have to know how each byte is stored 😵
 
 # USAGE
 
