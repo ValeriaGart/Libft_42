@@ -11,7 +11,9 @@ Well, that was one of the mandatory projects. Now after finishing it i realize h
 # USAGE
 
 `make` to compile 
+
 `make bonus` to compile with bonus part (operations with lists)
 
 `make clean` to remove all the object files
+
 `make fclean` to delete object files + .a 
